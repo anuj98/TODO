@@ -1,0 +1,19 @@
+.hamburger-wrapper {
+    display: flex;
+    justify-content: right;
+    margin-right: 10px;
+}
+
+.drawer-style {
+    width: 254px;
+}
+
+.MuiDrawer-paperAnchorDockedLeft {
+    box-shadow: 1px 6px 21px 7px #888888 !important;
+}
+
+.collapsed-navbar {
+    width: 50px;
+    height: 100vh;
+    box-shadow: 1px 6px 21px 7px #888888;
+}

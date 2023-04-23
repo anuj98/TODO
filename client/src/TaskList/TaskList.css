@@ -1,0 +1,34 @@
+.taskItem-wrapper {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    background-color: #DEEBF7;
+    font-size: 18px;
+    border-radius: 10px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.taskTitle-wrapper {
+    display: flex;
+    margin-left: 10px;
+}
+
+.title-style {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.date-style {
+    margin-right: 10px;
+}
+
+.favorite-style, .delete-style {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+.taskOperation-wrapper {
+    display: flex;
+}

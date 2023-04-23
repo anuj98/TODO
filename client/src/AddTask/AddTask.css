@@ -1,0 +1,32 @@
+.addtask-wrapper {
+    height: 80px;
+    background: #E7E6E6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.title-input {
+    height: 30px;
+    margin-left: 20px;
+    width: 400px;
+}
+
+.date-input {
+    height: 30px;
+    width: 200px;
+}
+
+.add-button, .add-button:hover {
+    border: 2px solid #5AA683;
+    border-radius: 3px;
+    color: #5AA683;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 50px;
+    height: 30px;
+}

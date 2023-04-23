@@ -2,7 +2,6 @@ import express, { Express, Request, Response } from 'express';
 import fs from "fs";
 import bodyparser from "body-parser";
 
-
 const app: Express = express();
 app.use(bodyparser.urlencoded({
   extended: true,
@@ -22,18 +21,16 @@ interface ITaskDetail {
 app.get('/api/gettasklist', (req: Request, res: Response) => {
   fs.readFile("./data.json", "utf8", (err, jsonString) => {
     if (err) {
-      console.log("File read failed:", err);
-      return;
+      res.status(404).send({ errorMessage: "Could not read the data file"});
     }
     res.send(jsonString);
   });
 });
 
-app.put('/api/addtask', (req: Request, res: Response) => {
+app.post('/api/addtask', (req: Request, res: Response) => {
     fs.readFile("./data.json", "utf8", (err, jsonString) => {
       if (err) {
-        console.log("File read failed:", err);
-        return;
+        res.status(404).send({ errorMessage: "Could not read the data file"});
       }
       if (req.body) {
         const result = JSON.parse(jsonString);
@@ -57,9 +54,9 @@ app.put('/api/addtask', (req: Request, res: Response) => {
 app.delete("/api/deletetask", (req: Request, res: Response) => {
   fs.readFile("./data.json", "utf8", (err, jsonString) => {
     if (err) {
-      console.log("File read failed:", err);
-      return;
+      res.status(404).send({ errorMessage: "Could not read the data file"});
     }
+
     if (req.query) {
       const result: ITaskDetail[] = JSON.parse(jsonString);
       const index = result.findIndex(item => item.id === parseInt(req.query.id as string));
@@ -81,18 +78,16 @@ app.delete("/api/deletetask", (req: Request, res: Response) => {
   })
 })
 
-app.post('/api/updatetask', (req: Request, res: Response) => {
+app.put('/api/updatetask', (req: Request, res: Response) => {
   fs.readFile("./data.json", "utf8", (err, jsonString) => {
     if (err) {
-      console.log("File read failed:", err);
-      return;
+      res.status(404).send({ errorMessage: "Could not read the data file"});
     }
     if (req.body) {
       const result: ITaskDetail[] = JSON.parse(jsonString);
       const index = result.findIndex(item => item.id === req.body.id);
       if (index > -1) {
         result[index] = req.body;
-        console.log(result);
         const newData = JSON.stringify(result);
         fs.writeFile("./data.json", newData, (err) => {
           if (err) {
